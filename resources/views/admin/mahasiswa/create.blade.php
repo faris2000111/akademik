@@ -1,0 +1,32 @@
+@extends('admin.layouts.main')
+
+@section('content')
+<div class="container-fluid">
+    <h1 class="mt-4">Tambah Mahasiswa</h1>
+    <form action="{{ route('admin.mahasiswa.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="nim">NIM</label>
+            <input type="text" name="nim" class="form-control" required value="{{ old('nim') }}">
+            @error('nim')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" name="nama" class="form-control" required value="{{ old('nama') }}">
+            @error('nama')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" required value="{{ old('email') }}">
+            @error('email')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <div class="form-group">
+            <label for="angkatan">Angkatan</label>
+            <input type="text" name="angkatan" class="form-control" value="{{ old('angkatan') }}">
+            @error('angkatan')<div class="text-danger">{{ $message }}</div>@enderror
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-secondary">Kembali</a>
+    </form>
+</div>
+@endsection 
